@@ -1,15 +1,16 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../config/postgres/sequelize.js";
 
-const TipoEdificacion = sequelize.define(
-  "td_tipo_edificacion",
+const EstadoCivil = sequelize.define(
+  "estadocivil",
   {
-    cod_tipo_edificacion: {
-      type: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
-    nomb_tipo_edificacion: {
+    estado: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -19,4 +20,4 @@ const TipoEdificacion = sequelize.define(
   }
 );
 
-export default TipoEdificacion;
+export default EstadoCivil;

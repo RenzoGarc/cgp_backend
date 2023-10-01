@@ -1,16 +1,15 @@
 import express, { json } from "express";
 import { corsMiddleware } from "./middlewares/cors.js";
 import "dotenv/config";
-import { setupMaestroRoutes } from "./setup/routeMaestroSetup.js";
-import { createUnicatRouter } from "./routes/fichas/unicat.js";
+import { createEstadoCivilRouter } from "./routes/maestros/estadoCivil.js";
 
 const app = express();
 app.use(json());
 app.use(corsMiddleware());
 app.disable("x-powered-by");
 
-setupMaestroRoutes(app);
-app.use("/unicat", createUnicatRouter());
+//CREAS LAS RUTA
+app.use("/maestros", createEstadoCivilRouter());
 
 const PORT = process.env.PORT ?? 1234;
 
