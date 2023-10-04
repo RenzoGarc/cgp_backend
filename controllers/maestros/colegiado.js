@@ -6,8 +6,9 @@ export class ColegiadoController {
   constructor() {}
 
   async getAll(req, res) {
+    const { page = 1, pagesize = 5 } = req.query;
     try {
-      const data = await colegiadoService.getAll();
+      const data = await colegiadoService.getAll(page, pagesize);
       res.json(data);
     } catch (error) {
       res.status(500).json({ error: error.message });

@@ -1,13 +1,21 @@
 import Colegiado from "../../models/maestros/colegiado.js";
 
 export class ColegiadoService {
-  async getAll() {
+  async getAll(pageNumber, pageSize) {
     try {
-      const data = await Colegiado.findAll();
-      if (!data) {
-        throw new Error("Colegiado no encontrado.");
-      }
-      return data;
+      const offset = (pageNumber - 1) * pageSize;
+      const data = await Colegiado.findAndCountAll({
+        offset,
+        limit: pageSize,
+      });
+      const totalItems = data.count;
+      const totalPages = Math.ceil(totalItems / pageSize);
+      return {
+        items: data.rows,
+        currentPage: parseInt(pageNumber),
+        totalPages,
+        totalItems,
+      };
     } catch (error) {
       throw new Error("Error al obtener los Colegiado...." + error);
     }
