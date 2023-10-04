@@ -16,3 +16,5 @@ export const createEstadoCivilRouter = () => {
 
   return EstadoCivilRouter;
 };
+
+export const createPagoRouter = () => {};
