@@ -3,23 +3,33 @@ import Colegiado from "../../models/maestros/colegiado.js";
 export class ColegiadoService {
   async getAll(pageNumber, pageSize) {
     try {
-      const offset = (pageNumber - 1) * pageSize;
-      const data = await Colegiado.findAndCountAll({
-        offset,
-        limit: pageSize,
-      });
-      const totalItems = data.count;
-      const totalPages = Math.ceil(totalItems / pageSize);
+      const data = await Colegiado.findAll();
       return {
-        items: data.rows,
-        currentPage: parseInt(pageNumber),
-        totalPages,
-        totalItems,
+        items: data,
       };
     } catch (error) {
       throw new Error("Error al obtener los Colegiado...." + error);
     }
   }
+  // async getAll(pageNumber, pageSize) {
+  //   try {
+  //     const offset = (pageNumber - 1) * pageSize;
+  //     const data = await Colegiado.findAndCountAll({
+  //       offset,
+  //       limit: pageSize,
+  //     });
+  //     const totalItems = data.count;
+  //     const totalPages = Math.ceil(totalItems / pageSize);
+  //     return {
+  //       items: data.rows,
+  //       currentPage: parseInt(pageNumber),
+  //       totalPages,
+  //       totalItems,
+  //     };
+  //   } catch (error) {
+  //     throw new Error("Error al obtener los Colegiado...." + error);
+  //   }
+  // }
 
   async create(estado) {
     try {
