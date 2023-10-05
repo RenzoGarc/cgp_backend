@@ -62,13 +62,9 @@ const Colegiado = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    aniotitulo: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     universidad: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -76,15 +72,15 @@ const Colegiado = sequelize.define(
     },
     fraccionamiento: {
       type: DataTypes.STRING(1),
-      allowNull: false,
+      allowNull: true,
     },
     difunto: {
       type: DataTypes.STRING(1),
-      allowNull: false,
+      allowNull: true,
     },
     padron: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     url_foto: {
       type: DataTypes.STRING,

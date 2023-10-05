@@ -31,10 +31,31 @@ export class ColegiadoService {
   //   }
   // }
 
-  async create(estado) {
+  async create(body) {
     try {
       const data = await Colegiado.create({
-        estado,
+        nombre: body.nombresComple,
+        genero: body.genero,
+        fechanacimiento: body.dnacimiento,
+        lugarnacimiento: body.lugarNaci,
+        dni: body.dni,
+        id_departamento: body.departamento,
+        id_provincia: body.provincia,
+        id_distrito: body.distrito,
+        zona: body.zona,
+        direccion: body.direccion,
+        // lugarresidencia:body.no,
+        centrolaboral: body.centrolabor,
+        ocupacion: body.ocupacion,
+        // universidad:body.no,
+        email: body.email,
+        // fraccionamiento:body.no,
+        // difunto:body.no,
+        padron: body.padron,
+        // url_foto: body.no,
+        fechainscripcion: body.dinscripcion,
+        idestadocivil: body.estadociv,
+        codigo: body.codigo,
       });
       return data;
     } catch (error) {

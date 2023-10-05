@@ -27,9 +27,9 @@ export class ColegiadoController {
   };
 
   create = async (req, res) => {
-    const { estado } = req.body;
+    const body = req.body;
     try {
-      const data = await colegiadoService.create(estado);
+      const data = await colegiadoService.create(body);
       res.status(201).json(data);
     } catch (error) {
       res.status(500).json({ error: "Error creando la información." });
