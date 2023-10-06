@@ -15,7 +15,7 @@ const Colegiado = sequelize.define(
       allowNull: false,
     },
     genero: {
-      type: DataTypes.STRING(1),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     fechanacimiento: {
@@ -71,11 +71,11 @@ const Colegiado = sequelize.define(
       allowNull: false,
     },
     fraccionamiento: {
-      type: DataTypes.STRING(1),
+      type: DataTypes.STRING,
       allowNull: true,
     },
     difunto: {
-      type: DataTypes.STRING(1),
+      type: DataTypes.STRING,
       allowNull: true,
     },
     padron: {

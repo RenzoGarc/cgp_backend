@@ -9,6 +9,11 @@ export const createUbigeoRouter = () => {
   const ubigeoController = new UbigeoController();
 
   UbigeoRouter.get("/", ubigeoController.getAll);
+  //
+  UbigeoRouter.get("/dep", ubigeoController.getDep);
+  UbigeoRouter.get("/prov/:id", ubigeoController.getProv);
+  UbigeoRouter.get("/dist/:id", ubigeoController.getDist);
+  //
   UbigeoRouter.get("/:id", ubigeoController.getById);
   UbigeoRouter.post("/", ubigeoController.create);
   UbigeoRouter.delete("/:id", ubigeoController.delete);

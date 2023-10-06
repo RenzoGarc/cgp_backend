@@ -27,9 +27,62 @@ export class ColegiadoController {
   };
 
   create = async (req, res) => {
-    const body = req.body;
+    const {
+      nombre,
+      genero,
+      fechanacimiento,
+      lugarnacimiento,
+      dni,
+      ruc,
+      id_departamento,
+      id_provincia,
+      id_distrito,
+      zona,
+      direccion,
+      lugarresidencia,
+      centrolaboral,
+      ocupacion,
+      aniotitulo,
+      universidad,
+      email,
+      fraccionamiento,
+      difunto,
+      padron,
+      url_foto,
+      fechainscripcion,
+      honorario,
+      idestadocivil,
+      codigo,
+    } = req.body;
+    console.log(req.body);
     try {
-      const data = await colegiadoService.create(body);
+      const data = await colegiadoService.create(
+        nombre,
+        genero,
+        fechanacimiento,
+        lugarnacimiento,
+        dni,
+        ruc,
+        id_departamento,
+        id_provincia,
+        id_distrito,
+        zona,
+        direccion,
+        lugarresidencia,
+        centrolaboral,
+        ocupacion,
+        aniotitulo,
+        universidad,
+        email,
+        fraccionamiento,
+        difunto,
+        padron,
+        url_foto,
+        fechainscripcion,
+        honorario,
+        idestadocivil,
+        codigo
+      );
       res.status(201).json(data);
     } catch (error) {
       res.status(500).json({ error: "Error creando la información." });

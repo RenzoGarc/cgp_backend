@@ -14,6 +14,35 @@ export class UbigeoController {
     }
   }
 
+  //
+  async getDep(req, res) {
+    try {
+      const data = await ubigeoService.getDep();
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  async getProv(req, res) {
+    const { id } = req.params;
+    try {
+      const data = await ubigeoService.getProv(id);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  async getDist(req, res) {
+    const { id } = req.params;
+    try {
+      const data = await ubigeoService.getDist(id);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  //
+
   getById = async (req, res) => {
     const { id } = req.params;
     try {
