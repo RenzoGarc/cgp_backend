@@ -15,6 +15,26 @@ export class ColegiadoController {
     }
   }
 
+  async getValidate(req, res) {
+    const { codigo } = req.params;
+    try {
+      const data = await colegiadoService.getValidate(codigo);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  async getColegiadoByCodigo(req, res) {
+    const { codigo } = req.params;
+    try {
+      const data = await colegiadoService.getColegiadoByCodigo(codigo);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
   getById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -85,7 +105,7 @@ export class ColegiadoController {
       );
       res.status(201).json(data);
     } catch (error) {
-      res.status(500).json({ error: "Error creando la información." });
+      res.status(500).json({ error });
     }
   };
 

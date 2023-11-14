@@ -11,6 +11,35 @@ export class ColegiadoService {
       throw new Error("Error al obtener los Colegiado...." + error);
     }
   }
+
+  async getValidate(codigo) {
+    try {
+      const data = await Colegiado.findOne({
+        where: {
+          codigo: codigo,
+        },
+      });
+      if (data) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      throw new Error("Error al obtener los Colegiado...." + error);
+    }
+  }
+
+  async getColegiadoByCodigo(codigo) {
+    try {
+      const data = await Colegiado.findOne({
+        where: {
+          codigo: codigo,
+        },
+      });
+      return data;
+    } catch (error) {
+      throw new Error("Error al obtener los Colegiado...." + error);
+    }
+  }
   // async getAll(pageNumber, pageSize) {
   //   try {
   //     const offset = (pageNumber - 1) * pageSize;
@@ -59,6 +88,8 @@ export class ColegiadoService {
     codigo
   ) {
     try {
+      let codigoFormateado = await this.FormartCode(codigo);
+      console.log(codigoFormateado);
       const data = await Colegiado.create({
         nombre,
         genero,
@@ -84,12 +115,23 @@ export class ColegiadoService {
         fechainscripcion,
         honorario,
         idestadocivil,
-        codigo,
+        codigo: codigoFormateado,
       });
       return data;
     } catch (error) {
-      console.log(error);
-      throw new Error("Error al crear el Colegiado.");
+      throw new Error("Error al crear el Colegiado: " + error);
+    }
+  }
+
+  async FormartCode(codigo) {
+    if (codigo.length == 1) {
+      return "000" + codigo;
+    } else if (codigo.length == 2) {
+      return "00" + codigo;
+    } else if (codigo.length == 3) {
+      return "0" + codigo;
+    } else if (codigo.length == 4) {
+      return codigo;
     }
   }
 

@@ -9,6 +9,11 @@ export const createColegiadoRouter = () => {
   const colegiadoController = new ColegiadoController();
 
   ColegiadoRouter.get("/", colegiadoController.getAll);
+  ColegiadoRouter.get(
+    "/codigo/:codigo",
+    colegiadoController.getColegiadoByCodigo
+  );
+  ColegiadoRouter.get("/validate/:codigo", colegiadoController.getValidate);
   ColegiadoRouter.get("/:id", colegiadoController.getById);
   ColegiadoRouter.post("/", colegiadoController.create);
   ColegiadoRouter.delete("/:id", colegiadoController.delete);

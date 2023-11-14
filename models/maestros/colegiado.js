@@ -95,7 +95,7 @@ const Colegiado = sequelize.define(
       allowNull: false,
     },
     codigo: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
