@@ -1,20 +1,18 @@
 import { Router } from "express";
 
-import { EstadoCivilController } from "../../controllers/maestros/estadoCivil.js";
-import {} from "../../controllers/maestros/estadoCivil.js";
+import { PagoController } from "../../controllers/maestros/pago.js";
+import {} from "../../controllers/maestros/pago.js";
 
-export const createEstadoCivilRouter = () => {
-  const EstadoCivilRouter = Router();
+export const createPagoRouter = () => {
+  const PagoRouter = Router();
   //CAMBIAR
-  const estadoCivilController = new EstadoCivilController();
+  const pagoController = new PagoController();
 
-  EstadoCivilRouter.get("/", estadoCivilController.getAll);
-  EstadoCivilRouter.get("/:id", estadoCivilController.getById);
-  EstadoCivilRouter.post("/", estadoCivilController.create);
-  EstadoCivilRouter.delete("/:id", estadoCivilController.delete);
-  EstadoCivilRouter.put("/:id", estadoCivilController.update);
+  PagoRouter.get("/", pagoController.getAll);
+  PagoRouter.get("/:id", pagoController.getById);
+  PagoRouter.post("/", pagoController.create);
+  PagoRouter.delete("/:id", pagoController.delete);
+  PagoRouter.put("/:id", pagoController.update);
 
-  return EstadoCivilRouter;
+  return PagoRouter;
 };
-
-export const createPagoRouter = () => {};

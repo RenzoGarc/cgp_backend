@@ -5,11 +5,11 @@ export class EstadoCivilService {
     try {
       const data = await EstadoCivil.findAll();
       if (!data) {
-        throw new Error("Tipo de vía no encontrado.");
+        throw new Error("Estado civil no encontrado.");
       }
       return data;
     } catch (error) {
-      throw new Error("Error al obtener los tipos de vía...." + error);
+      throw new Error("Error al obtener los estado civil...." + error);
     }
   }
 
@@ -21,7 +21,7 @@ export class EstadoCivilService {
       return data;
     } catch (error) {
       console.log(error);
-      throw new Error("Error al crear el tipo de vía.");
+      throw new Error("Error al crear el estado civil.");
     }
   }
 
@@ -29,11 +29,11 @@ export class EstadoCivilService {
     try {
       const data = await EstadoCivil.findByPk(id);
       if (!data) {
-        throw new Error("Tipo de vía no encontrado.");
+        throw new Error("Estado civil no encontrado.");
       }
       return data;
     } catch (error) {
-      throw new Error("Error al obtener el tipo de vía por ID.");
+      throw new Error("Error al obtener el estado civil por ID.");
     }
   }
 
@@ -42,7 +42,7 @@ export class EstadoCivilService {
       const data = await EstadoCivil.update({ estado }, { where: { id } });
       return data;
     } catch (error) {
-      throw new Error("Error al actualizar el tipo de vía.");
+      throw new Error("Error al actualizar el estado civil.");
     }
   }
 
@@ -54,7 +54,7 @@ export class EstadoCivilService {
       return data;
     } catch (error) {
       console.log(error);
-      throw new Error("Error al eliminar el tipo de vía.");
+      throw new Error("Error al eliminar el estado civil.");
     }
   }
 }

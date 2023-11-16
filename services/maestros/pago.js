@@ -1,20 +1,78 @@
-import { Router } from "express";
+import Pago from "../../models/maestros/pago.js";
 
-import { EstadoCivilController } from "../../controllers/maestros/estadoCivil.js";
-import {} from "../../controllers/maestros/estadoCivil.js";
+export class PagoService {
+  async getAll() {
+    try {
+      const data = await Pago.findAll();
+      if (!data) {
+        throw new Error("Pago  no encontrado.");
+      }
+      return data;
+    } catch (error) {
+      throw new Error("Error al obtener los Pago ...." + error);
+    }
+  }
 
-export const createEstadoCivilRouter = () => {
-  const EstadoCivilRouter = Router();
-  //CAMBIAR
-  const estadoCivilController = new EstadoCivilController();
+  async create(
+    monto,
+    fechapago,
+    idcolegiado,
+    idrecibo,
+    idformapago,
+    idconceptolist,
+    idconcepto,
+    conceptotext,
+    description
+  ) {
+    try {
+      const data = await Pago.create({
+        monto,
+        fechapago,
+        idcolegiado,
+        idrecibo,
+        idformapago,
+        idconceptolist,
+        idconcepto,
+        conceptotext,
+        description,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al crear el Pago .");
+    }
+  }
 
-  EstadoCivilRouter.get("/", estadoCivilController.getAll);
-  EstadoCivilRouter.get("/:id", estadoCivilController.getById);
-  EstadoCivilRouter.post("/", estadoCivilController.create);
-  EstadoCivilRouter.delete("/:id", estadoCivilController.delete);
-  EstadoCivilRouter.put("/:id", estadoCivilController.update);
+  async getById(id) {
+    try {
+      const data = await Pago.findByPk(id);
+      if (!data) {
+        throw new Error("Pago  no encontrado.");
+      }
+      return data;
+    } catch (error) {
+      throw new Error("Error al obtener el Pago  por ID.");
+    }
+  }
 
-  return EstadoCivilRouter;
-};
+  async update(id, estado) {
+    try {
+      const data = await Pago.update({ estado }, { where: { id } });
+      return data;
+    } catch (error) {
+      throw new Error("Error al actualizar el Pago .");
+    }
+  }
 
-export const createPagoRouter = () => {};
+  async delete(id) {
+    try {
+      const data = await Pago.destroy({
+        where: { id },
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al eliminar el Pago Fraccionamiento.");
+    }
+  }
+}

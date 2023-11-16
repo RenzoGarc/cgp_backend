@@ -26,10 +26,30 @@ export class EgresoController {
   };
 
   create = async (req, res) => {
-    const { estado } = req.body;
+    const {
+      monto,
+      description,
+      conceptotext,
+      fechaegreso,
+      idcolegiado,
+      idconceptolist,
+      created_at,
+      updated_at,
+      deleted_at,
+    } = req.body;
     try {
-      const data = await egresoService.create(estado);
-      res.status(201).json(data);
+      const data = await egresoService.create(
+        monto,
+        description,
+        conceptotext,
+        fechaegreso,
+        idcolegiado,
+        idconceptolist,
+        created_at,
+        updated_at,
+        deleted_at
+      );
+      res.status(200).json(data);
     } catch (error) {
       res.status(500).json({ error: "Error creando la información." });
     }

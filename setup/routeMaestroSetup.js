@@ -22,6 +22,7 @@ import { createTipoEntregaRouter } from "../routes/maestros/tipoEntrega.js";
 import { createUbigeoRouter } from "../routes/maestros/ubigeo.js";
 import { createUsersRouter } from "../routes/maestros/users.js";
 import { createVotacionRouter } from "../routes/maestros/votacion.js";
+import { createPagoRouter } from "../routes/maestros/pago.js";
 
 export function setupMaestroRoutes(app) {
   const maestrosRutas = {
@@ -39,6 +40,7 @@ export function setupMaestroRoutes(app) {
     multa: createMultaRouter(),
     multaFraccion: createMultaFraccionRouter(),
     operadorTelf: createOperadorTelfRouter(),
+    pago: createPagoRouter(),
     pagofraccionamiento: createPagoFraccionamientoRouter(),
     recibo: createReciboRouter(),
     sancion: createSancionRouter(),

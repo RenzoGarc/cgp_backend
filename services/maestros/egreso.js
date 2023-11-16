@@ -13,10 +13,28 @@ export class EgresoService {
     }
   }
 
-  async create(estado) {
+  async create(
+    monto,
+    description,
+    conceptotext,
+    fechaegreso,
+    idcolegiado,
+    idconceptolist,
+    created_at,
+    updated_at,
+    deleted_at
+  ) {
     try {
       const data = await Egreso.create({
-        estado,
+        monto,
+        description,
+        conceptotext,
+        fechaegreso,
+        idcolegiado,
+        idconceptolist,
+        created_at,
+        updated_at,
+        deleted_at,
       });
       return data;
     } catch (error) {
