@@ -73,6 +73,10 @@ export class ColegiadoController {
       honorario,
       idestadocivil,
       codigo,
+      id_departamento_n,
+      id_provincia_n,
+      id_distrito_n,
+      celular,
     } = req.body;
     console.log(req.body);
     try {
@@ -101,7 +105,11 @@ export class ColegiadoController {
         fechainscripcion,
         honorario,
         idestadocivil,
-        codigo
+        codigo,
+        id_departamento_n,
+        id_provincia_n,
+        id_distrito_n,
+        celular
       );
       res.status(201).json(data);
     } catch (error) {
@@ -126,9 +134,70 @@ export class ColegiadoController {
 
   update = async (req, res) => {
     const { id } = req.params;
-    const { estado } = req.body;
+    const {
+      nombre,
+      genero,
+      fechanacimiento,
+      lugarnacimiento,
+      dni,
+      ruc,
+      id_departamento,
+      id_provincia,
+      id_distrito,
+      zona,
+      direccion,
+      lugarresidencia,
+      centrolaboral,
+      ocupacion,
+      aniotitulo,
+      universidad,
+      email,
+      fraccionamiento,
+      difunto,
+      padron,
+      url_foto,
+      fechainscripcion,
+      honorario,
+      idestadocivil,
+      codigo,
+      id_departamento_n,
+      id_provincia_n,
+      id_distrito_n,
+      celular,
+    } = req.body;
     try {
-      const data = await colegiadoService.update(id, estado);
+      const data = await colegiadoService.update(
+        id,
+        nombre,
+        genero,
+        fechanacimiento,
+        lugarnacimiento,
+        dni,
+        ruc,
+        id_departamento,
+        id_provincia,
+        id_distrito,
+        zona,
+        direccion,
+        lugarresidencia,
+        centrolaboral,
+        ocupacion,
+        aniotitulo,
+        universidad,
+        email,
+        fraccionamiento,
+        difunto,
+        padron,
+        url_foto,
+        fechainscripcion,
+        honorario,
+        idestadocivil,
+        codigo,
+        id_departamento_n,
+        id_provincia_n,
+        id_distrito_n,
+        celular
+      );
       return res.json(data);
     } catch (error) {
       res.status(500).json({ error: "Error actualizando la información." });

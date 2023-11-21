@@ -98,6 +98,34 @@ const Colegiado = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    ruc: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    id_departamento_n: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    id_provincia_n: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    id_distrito_n: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    aniotitulo: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    celular: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    honorario: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     schema: "public",

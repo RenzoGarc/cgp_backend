@@ -85,7 +85,11 @@ export class ColegiadoService {
     fechainscripcion,
     honorario,
     idestadocivil,
-    codigo
+    codigo,
+    id_departamento_n,
+    id_provincia_n,
+    id_distrito_n,
+    celular
   ) {
     try {
       let codigoFormateado = await this.FormartCode(codigo);
@@ -116,6 +120,10 @@ export class ColegiadoService {
         honorario,
         idestadocivil,
         codigo: codigoFormateado,
+        id_departamento_n,
+        id_provincia_n,
+        id_distrito_n,
+        celular,
       });
       return data;
     } catch (error) {
@@ -147,9 +155,105 @@ export class ColegiadoService {
     }
   }
 
-  async update(id, estado) {
+  async update(
+    id,
+    nombre,
+    genero,
+    fechanacimiento,
+    lugarnacimiento,
+    dni,
+    ruc,
+    id_departamento,
+    id_provincia,
+    id_distrito,
+    zona,
+    direccion,
+    lugarresidencia,
+    centrolaboral,
+    ocupacion,
+    aniotitulo,
+    universidad,
+    email,
+    fraccionamiento,
+    difunto,
+    padron,
+    url_foto,
+    fechainscripcion,
+    honorario,
+    idestadocivil,
+    codigo,
+    id_departamento_n,
+    id_provincia_n,
+    id_distrito_n,
+    celular
+  ) {
     try {
-      const data = await Colegiado.update({ estado }, { where: { id } });
+      console.log(
+        id,
+        nombre,
+        genero,
+        fechanacimiento,
+        lugarnacimiento,
+        dni,
+        ruc,
+        id_departamento,
+        id_provincia,
+        id_distrito,
+        zona,
+        direccion,
+        lugarresidencia,
+        centrolaboral,
+        ocupacion,
+        aniotitulo,
+        universidad,
+        email,
+        fraccionamiento,
+        difunto,
+        padron,
+        url_foto,
+        fechainscripcion,
+        honorario,
+        idestadocivil,
+        codigo,
+        id_departamento_n,
+        id_provincia_n,
+        id_distrito_n,
+        celular
+      );
+      const data = await Colegiado.update(
+        {
+          nombre,
+          genero,
+          fechanacimiento,
+          lugarnacimiento,
+          dni,
+          ruc,
+          id_departamento,
+          id_provincia,
+          id_distrito,
+          zona,
+          direccion,
+          lugarresidencia,
+          centrolaboral,
+          ocupacion,
+          aniotitulo,
+          universidad,
+          email,
+          fraccionamiento,
+          difunto,
+          padron,
+          url_foto,
+          fechainscripcion,
+          honorario,
+          idestadocivil,
+          codigo,
+          id_departamento_n,
+          id_provincia_n,
+          id_distrito_n,
+          celular,
+        },
+        { where: { id: parseInt(id) } }
+      );
       return data;
     } catch (error) {
       throw new Error("Error al actualizar el Colegiado.");
