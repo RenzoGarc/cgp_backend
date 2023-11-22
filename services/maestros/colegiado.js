@@ -32,7 +32,7 @@ export class ColegiadoService {
     try {
       const data = await Colegiado.findOne({
         where: {
-          codigo: codigo,
+          id: codigo,
         },
       });
       return data;
