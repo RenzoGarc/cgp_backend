@@ -188,38 +188,6 @@ export class ColegiadoService {
     celular
   ) {
     try {
-      console.log(
-        id,
-        nombre,
-        genero,
-        fechanacimiento,
-        lugarnacimiento,
-        dni,
-        ruc,
-        id_departamento,
-        id_provincia,
-        id_distrito,
-        zona,
-        direccion,
-        lugarresidencia,
-        centrolaboral,
-        ocupacion,
-        aniotitulo,
-        universidad,
-        email,
-        fraccionamiento,
-        difunto,
-        padron,
-        url_foto,
-        fechainscripcion,
-        honorario,
-        idestadocivil,
-        codigo,
-        id_departamento_n,
-        id_provincia_n,
-        id_distrito_n,
-        celular
-      );
       const data = await Colegiado.update(
         {
           nombre,
