@@ -37,6 +37,7 @@ export class EgresoController {
       updated_at,
       deleted_at,
     } = req.body;
+    console.log(req.body);
     try {
       const data = await egresoService.create(
         monto,
@@ -49,6 +50,7 @@ export class EgresoController {
         updated_at,
         deleted_at
       );
+      console.log(data.id);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).json({ error: "Error creando la información." });

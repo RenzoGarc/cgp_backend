@@ -1,5 +1,4 @@
 //rutas app
-import { createEstadoCivilRouter } from "../routes/maestros/estadoCivil.js";
 import { createAsistenciaVotacionRouter } from "../routes/maestros/asistenciaVotacion.js";
 import { createCertificadoRouter } from "../routes/maestros/certificado.js";
 import { createColegiadoRouter } from "../routes/maestros/colegiado.js";
@@ -7,6 +6,7 @@ import { createColegiadoFraccionamientoRouter } from "../routes/maestros/colegia
 import { createConceptoListRouter } from "../routes/maestros/conceptoList.js";
 import { createConfigurationsRouter } from "../routes/maestros/configurations.js";
 import { createEgresoRouter } from "../routes/maestros/egreso.js";
+import { createEstadoCivilRouter } from "../routes/maestros/estadoCivil.js";
 import { createFormaPagoRouter } from "../routes/maestros/formaPago.js";
 import { createFraccionamientoRouter } from "../routes/maestros/fraccionamiento.js";
 import { createMultaRouter } from "../routes/maestros/multa.js";
@@ -23,6 +23,7 @@ import { createUbigeoRouter } from "../routes/maestros/ubigeo.js";
 import { createUsersRouter } from "../routes/maestros/users.js";
 import { createVotacionRouter } from "../routes/maestros/votacion.js";
 import { createPagoRouter } from "../routes/maestros/pago.js";
+import { createIngresos1Router } from "../routes/maestros/ingresos1.js";
 
 export function setupMaestroRoutes(app) {
   const maestrosRutas = {
@@ -51,6 +52,10 @@ export function setupMaestroRoutes(app) {
     ubigeo: createUbigeoRouter(),
     users: createUsersRouter(),
     votacion: createVotacionRouter(),
+
+    //nuevas tablas
+
+    ingresos1: createIngresos1Router(),
   };
 
   for (const [ruta, router] of Object.entries(maestrosRutas)) {

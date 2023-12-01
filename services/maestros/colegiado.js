@@ -89,7 +89,11 @@ export class ColegiadoService {
     id_departamento_n,
     id_provincia_n,
     id_distrito_n,
-    celular
+    celular,
+    especializacion_1,
+    especializacion_2,
+    especializacion_3,
+    especializacion_4
   ) {
     try {
       let codigoFormateado = await this.FormartCode(codigo);
@@ -124,6 +128,10 @@ export class ColegiadoService {
         id_provincia_n,
         id_distrito_n,
         celular,
+        especializacion_1,
+        especializacion_2,
+        especializacion_3,
+        especializacion_4,
       });
       return data;
     } catch (error) {
@@ -185,7 +193,11 @@ export class ColegiadoService {
     id_departamento_n,
     id_provincia_n,
     id_distrito_n,
-    celular
+    celular,
+    especializacion_1,
+    especializacion_2,
+    especializacion_3,
+    especializacion_4
   ) {
     try {
       const data = await Colegiado.update(
@@ -219,6 +231,10 @@ export class ColegiadoService {
           id_provincia_n,
           id_distrito_n,
           celular,
+          especializacion_1,
+          especializacion_2,
+          especializacion_3,
+          especializacion_4,
         },
         { where: { id: parseInt(id) } }
       );

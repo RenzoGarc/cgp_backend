@@ -126,6 +126,22 @@ const Colegiado = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    especializacion_1: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    especializacion_2: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    especializacion_3: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    especializacion_4: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     schema: "public",

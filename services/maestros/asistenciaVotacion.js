@@ -13,10 +13,13 @@ export class AsistenciaVotacionService {
     }
   }
 
-  async create(estado) {
+  async create(estado, votacionobservacion, idvotacion, idcolegiado) {
     try {
       const data = await AsistenciaVotacion.create({
         estado,
+        votacionobservacion,
+        idvotacion,
+        idcolegiado,
       });
       return data;
     } catch (error) {

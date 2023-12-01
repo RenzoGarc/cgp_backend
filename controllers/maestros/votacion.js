@@ -26,9 +26,9 @@ export class VotacionController {
   };
 
   create = async (req, res) => {
-    const { estado } = req.body;
+    const { anio, monto } = req.body;
     try {
-      const data = await votacionService.create(estado);
+      const data = await votacionService.create(anio, monto);
       res.status(201).json(data);
     } catch (error) {
       res.status(500).json({ error: "Error creando la información." });

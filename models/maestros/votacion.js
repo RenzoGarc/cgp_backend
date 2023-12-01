@@ -14,7 +14,7 @@ const Votacion = sequelize.define(
       type: DataTypes.NUMBER,
       allowNull: false,
     },
-    ano: {
+    anio: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

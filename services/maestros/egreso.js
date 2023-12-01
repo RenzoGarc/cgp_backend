@@ -24,6 +24,17 @@ export class EgresoService {
     updated_at,
     deleted_at
   ) {
+    console.log(
+      monto,
+      description,
+      conceptotext,
+      fechaegreso,
+      idcolegiado,
+      idconceptolist,
+      created_at,
+      updated_at,
+      deleted_at
+    );
     try {
       const data = await Egreso.create({
         monto,
@@ -45,7 +56,7 @@ export class EgresoService {
 
   async getById(id) {
     try {
-      const data = await Egreso.findByPk(id);
+      const data = await Egreso.findAll({ where: { idcolegiado: id } });
       if (!data) {
         throw new Error("Egreso no encontrado.");
       }

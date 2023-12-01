@@ -19,6 +19,8 @@ app.use("/egresos/detail", createEgresosRouter());
 
 app.use("/certificados/detail", createCertificadosRouter());
 
+//
+
 const PORT = process.env.PORT ?? 1234;
 
 app.listen(PORT, () => {

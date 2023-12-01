@@ -26,9 +26,25 @@ export class CertificadoController {
   };
 
   create = async (req, res) => {
-    const { estado } = req.body;
+    const {
+      codcertificado,
+      cantidad,
+      fechaemision,
+      observacion,
+      idpago,
+      idtipoentrega,
+      idtipocertificado,
+    } = req.body;
     try {
-      const data = await certificadoService.create(estado);
+      const data = await certificadoService.create(
+        codcertificado,
+        cantidad,
+        fechaemision,
+        observacion,
+        idpago,
+        idtipoentrega,
+        idtipocertificado
+      );
       res.status(201).json(data);
     } catch (error) {
       res.status(500).json({ error: "Error creando la información." });
@@ -60,4 +76,17 @@ export class CertificadoController {
       res.status(500).json({ error: "Error actualizando la información." });
     }
   };
+
+  //
+  async getAllById(req, res) {
+    console.log(req.params);
+    const { id } = req.params;
+    try {
+      console.log(id);
+      const data = await certificadoService.getAllByid(id);
+      res.json(data);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 }

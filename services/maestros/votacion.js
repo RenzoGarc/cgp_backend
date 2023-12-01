@@ -13,10 +13,11 @@ export class VotacionService {
     }
   }
 
-  async create(estado) {
+  async create(anio, monto) {
     try {
       const data = await Votacion.create({
-        estado,
+        anio,
+        monto,
       });
       return data;
     } catch (error) {

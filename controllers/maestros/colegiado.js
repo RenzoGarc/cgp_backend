@@ -77,6 +77,10 @@ export class ColegiadoController {
       id_provincia_n,
       id_distrito_n,
       celular,
+      especializacion_1,
+      especializacion_2,
+      especializacion_3,
+      especializacion_4,
     } = req.body;
     console.log(req.body);
     try {
@@ -109,7 +113,11 @@ export class ColegiadoController {
         id_departamento_n,
         id_provincia_n,
         id_distrito_n,
-        celular
+        celular,
+        especializacion_1,
+        especializacion_2,
+        especializacion_3,
+        especializacion_4
       );
       res.status(201).json(data);
     } catch (error) {

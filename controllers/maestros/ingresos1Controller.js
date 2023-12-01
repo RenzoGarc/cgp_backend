@@ -1,13 +1,14 @@
-import { AsistenciaVotacionService } from "../../services/maestros/asistenciaVotacion.js";
+import { Ingresos1Service } from "../../services/maestros/ingresos1.js";
 
-const asistenciaVotacionService = new AsistenciaVotacionService();
+const ingresos1Service = new Ingresos1Service();
 
-export class AsistenciaVotacionController {
+export class Ingresos1Controller {
   constructor() {}
 
   async getAll(req, res) {
     try {
-      const data = await asistenciaVotacionService.getAll();
+      const data = await ingresos1Service.getAll();
+      console.log(data);
       res.json(data);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -17,7 +18,7 @@ export class AsistenciaVotacionController {
   getById = async (req, res) => {
     const { id } = req.params;
     try {
-      const data = await asistenciaVotacionService.getById(id);
+      const data = await ingresos1Service.getById(id);
       if (data) return res.json(data);
       res.status(404).json({ message: "Información no encontrada" });
     } catch (error) {
@@ -26,13 +27,24 @@ export class AsistenciaVotacionController {
   };
 
   create = async (req, res) => {
-    const { estado, votacionobservacion, idvotacion, idcolegiado } = req.body;
+    const {
+      fecha,
+      monto,
+      cod_colegiado_descripcion,
+      motivo,
+      descripcion,
+      num_comprobante,
+      tipo_recibo,
+    } = req.body;
     try {
-      const data = await asistenciaVotacionService.create(
-        estado,
-        votacionobservacion,
-        idvotacion,
-        idcolegiado
+      const data = await ingresos1Service.create(
+        fecha,
+        monto,
+        cod_colegiado_descripcion,
+        motivo,
+        descripcion,
+        num_comprobante,
+        tipo_recibo
       );
       res.status(201).json(data);
     } catch (error) {
@@ -44,7 +56,7 @@ export class AsistenciaVotacionController {
     const { id } = req.params;
 
     try {
-      const data = await asistenciaVotacionService.delete(id);
+      const data = await ingresos1Service.delete(id);
 
       if (!data) {
         return res.status(404).json({ message: "Información no encontrada" });
@@ -59,7 +71,7 @@ export class AsistenciaVotacionController {
     const { id } = req.params;
     const { estado } = req.body;
     try {
-      const data = await asistenciaVotacionService.update(id, estado);
+      const data = await ingresos1Service.update(id, estado);
       return res.json(data);
     } catch (error) {
       res.status(500).json({ error: "Error actualizando la información." });

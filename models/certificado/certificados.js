@@ -40,7 +40,7 @@ const CertificadosDetail = sequelize.define(
     },
     id_colegiado: {
       type: DataTypes.BIGINT,
-      allowNull: false,
+      allowNull: true,
     },
     monto: {
       type: DataTypes.FLOAT,

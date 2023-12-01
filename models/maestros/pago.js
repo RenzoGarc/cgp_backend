@@ -34,10 +34,7 @@ const Pago = sequelize.define(
       type: DataTypes.BIGINT,
       allowNull: true,
     },
-    idconcepto: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
+
     conceptotext: {
       type: DataTypes.STRING,
       allowNull: true,
