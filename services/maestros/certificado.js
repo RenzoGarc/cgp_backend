@@ -37,13 +37,6 @@ export class CertificadoService {
     idtipocertificado
   ) {
     try {
-      // const data1 = await Pago.create({
-      //   idcolegiado: 31,
-      //   monto: 200,
-      //   fechapago: "2023-11-30",
-      // });
-      // console.log(data1);
-      console.log(data1.id);
       const data = await Certificado.create({
         codcertificado,
         cantidad,
@@ -63,13 +56,15 @@ export class CertificadoService {
 
   async getById(id) {
     try {
-      const data = await Certificado.findByPk(id);
+      const data = await Certificado.findAll({
+        where: { id: id },
+      });
       if (!data) {
         throw new Error("Certificado no encontrado.");
       }
       return data;
     } catch (error) {
-      throw new Error("Error al obtener el Certificado por ID.");
+      throw new Error("Error al obtener el Certificado por ID." + error);
     }
   }
 

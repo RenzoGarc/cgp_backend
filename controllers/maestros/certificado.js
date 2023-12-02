@@ -18,7 +18,7 @@ export class CertificadoController {
     const { id } = req.params;
     try {
       const data = await certificadoService.getById(id);
-      if (data) return res.json(data);
+      if (data) return res.status(200).json(data);
       res.status(404).json({ message: "Información no encontrada" });
     } catch (error) {
       res.status(500).json({ error: error.message });
