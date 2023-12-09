@@ -1,4 +1,6 @@
 import AsistenciaVotacion from "../../models/maestros/asistenciaVotacion.js";
+import Votacion from "../../models/maestros/votacion.js";
+import Colegiado from "../../models/maestros/colegiado.js";
 
 export class AsistenciaVotacionService {
   async getAll() {
@@ -15,13 +17,22 @@ export class AsistenciaVotacionService {
 
   async create(estado, votacionobservacion, idvotacion, idcolegiado) {
     try {
-      const data = await AsistenciaVotacion.create({
+      const datavotacion = await Votacion.create({
+        anio,
+        monto,
+      });
+      const datacolegiado = await Colegiado.create({ nombre, dni });
+      const dataasistencia = await AsistenciaVotacion.create({
         estado,
         votacionobservacion,
-        idvotacion,
-        idcolegiado,
+        idvotacion: datavotacion.id,
+        idcolegiado: datacolegiado.id,
+        anio: datavotacion.anio,
+        monto: datavotacion.monto,
+        nombre: datacolegiado.nombre,
+        dni: datacolegiado.dni,
       });
-      return data;
+      return dataasistencia;
     } catch (error) {
       console.log(error);
       throw new Error("Error al crear la Asistencia de Votacion.");

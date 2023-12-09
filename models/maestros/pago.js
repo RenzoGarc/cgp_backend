@@ -22,10 +22,7 @@ const Pago = sequelize.define(
       type: DataTypes.BIGINT,
       allowNull: true,
     },
-    idrecibo: {
-      type: DataTypes.BIGINT,
-      allowNull: true,
-    },
+
     idformapago: {
       type: DataTypes.BIGINT,
       allowNull: true,
@@ -41,6 +38,10 @@ const Pago = sequelize.define(
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    ncomprobante: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
   },

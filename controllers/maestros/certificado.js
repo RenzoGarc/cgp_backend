@@ -13,6 +13,14 @@ export class CertificadoController {
       res.status(500).json({ error: error.message });
     }
   }
+  // async getAll(req, res) {
+  //   try {
+  //     const data = await certificadoService.getOne();
+  //     res.json(data);
+  //   } catch (error) {
+  //     res.status(500).json({ error: error.message });
+  //   }
+  // }
 
   getById = async (req, res) => {
     const { id } = req.params;
@@ -27,24 +35,32 @@ export class CertificadoController {
 
   create = async (req, res) => {
     const {
-      codcertificado,
       cantidad,
       fechaemision,
       observacion,
-      idpago,
       idtipoentrega,
       idtipocertificado,
+      monto,
+      idcolegiado,
+      fechapago,
+      ncomprobante,
+      idformapago,
     } = req.body;
+    console.log(req.body);
     try {
       const data = await certificadoService.create(
-        codcertificado,
         cantidad,
         fechaemision,
         observacion,
-        idpago,
         idtipoentrega,
-        idtipocertificado
+        idtipocertificado,
+        monto,
+        idcolegiado,
+        fechapago,
+        ncomprobante,
+        idformapago
       );
+
       res.status(201).json(data);
     } catch (error) {
       res.status(500).json({ error: "Error creando la información." });
