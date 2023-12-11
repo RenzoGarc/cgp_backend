@@ -11,7 +11,7 @@ const Votacion = sequelize.define(
       autoIncrement: true,
     },
     monto: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     anio: {

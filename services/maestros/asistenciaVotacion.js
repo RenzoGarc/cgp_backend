@@ -15,23 +15,31 @@ export class AsistenciaVotacionService {
     }
   }
 
-  async create(estado, votacionobservacion, idvotacion, idcolegiado) {
+  async create(anio, asistencia, montoMulta) {
     try {
       const datavotacion = await Votacion.create({
         anio,
-        monto,
+        monto: montoMulta,
       });
-      const datacolegiado = await Colegiado.create({ nombre, dni });
-      const dataasistencia = await AsistenciaVotacion.create({
-        estado,
-        votacionobservacion,
-        idvotacion: datavotacion.id,
-        idcolegiado: datacolegiado.id,
-        anio: datavotacion.anio,
-        monto: datavotacion.monto,
-        nombre: datacolegiado.nombre,
-        dni: datacolegiado.dni,
-      });
+
+      let newAsistencias = [];
+      for (let index in asistencia) {
+        const element = asistencia[index];
+        let newEstado = "asistencia";
+        if (!element.estado) {
+          newEstado = "falto";
+        }
+        const bodyPush = {};
+        bodyPush.estado = newEstado;
+        bodyPush.votacionobservacion = "";
+        bodyPush.idvotacion = datavotacion.id;
+        bodyPush.idcolegiado = element.id;
+        newAsistencias.push(bodyPush);
+      }
+      console.log(newAsistencias);
+      const dataasistencia = await AsistenciaVotacion.bulkCreate(
+        newAsistencias
+      );
       return dataasistencia;
     } catch (error) {
       console.log(error);

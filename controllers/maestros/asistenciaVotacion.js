@@ -26,26 +26,13 @@ export class AsistenciaVotacionController {
   };
 
   create = async (req, res) => {
-    const {
-      estado,
-      votacionobservacion,
-      idvotacion,
-      idcolegiado,
-      anio,
-      monto,
-      nombre,
-      dni,
-    } = req.body;
+    const { anio, asistencia, montoMulta } = req.body;
     try {
+      console.log("paso 1");
       const data = await asistenciaVotacionService.create(
-        estado,
-        votacionobservacion,
-        idvotacion,
-        idcolegiado,
         anio,
-        monto,
-        nombre,
-        dni
+        asistencia,
+        montoMulta
       );
       res.status(201).json(data);
     } catch (error) {
