@@ -142,6 +142,10 @@ const Colegiado = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    pais: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     schema: "public",

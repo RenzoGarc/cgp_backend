@@ -30,24 +30,22 @@ export class PagoController {
       monto,
       fechapago,
       idcolegiado,
-      ncomprobante,
       idformapago,
       idconceptolist,
-      idconcepto,
       conceptotext,
       description,
+      ncomprobante,
     } = req.body;
     try {
       const data = await pagoService.create(
         monto,
         fechapago,
         idcolegiado,
-        ncomprobante,
         idformapago,
         idconceptolist,
-        idconcepto,
         conceptotext,
-        description
+        description,
+        ncomprobante
       );
       res.status(200).json(data);
     } catch (error) {

@@ -93,7 +93,8 @@ export class ColegiadoService {
     especializacion_1,
     especializacion_2,
     especializacion_3,
-    especializacion_4
+    especializacion_4,
+    pais
   ) {
     try {
       let codigoFormateado = await this.FormartCode(codigo);
@@ -132,6 +133,7 @@ export class ColegiadoService {
         especializacion_2,
         especializacion_3,
         especializacion_4,
+        pais,
       });
       return data;
     } catch (error) {

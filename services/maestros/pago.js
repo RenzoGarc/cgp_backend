@@ -17,24 +17,22 @@ export class PagoService {
     monto,
     fechapago,
     idcolegiado,
-    ncomprobante,
     idformapago,
     idconceptolist,
-    idconcepto,
     conceptotext,
-    description
+    description,
+    ncomprobante
   ) {
     try {
       const data = await Pago.create({
         monto,
         fechapago,
         idcolegiado,
-        ncomprobante,
         idformapago,
         idconceptolist,
-        idconcepto,
         conceptotext,
         description,
+        ncomprobante,
       });
       return data;
     } catch (error) {

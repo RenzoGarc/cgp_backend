@@ -81,6 +81,7 @@ export class ColegiadoController {
       especializacion_2,
       especializacion_3,
       especializacion_4,
+      pais,
     } = req.body;
     console.log(req.body);
     try {
@@ -117,7 +118,8 @@ export class ColegiadoController {
         especializacion_1,
         especializacion_2,
         especializacion_3,
-        especializacion_4
+        especializacion_4,
+        pais
       );
       res.status(201).json(data);
     } catch (error) {

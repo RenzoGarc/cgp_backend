@@ -24,6 +24,7 @@ import { createUsersRouter } from "../routes/maestros/users.js";
 import { createVotacionRouter } from "../routes/maestros/votacion.js";
 import { createPagoRouter } from "../routes/maestros/pago.js";
 import { createIngresos1Router } from "../routes/maestros/ingresos1.js";
+import { createReporteRouter } from "../routes/reporte.js";
 
 export function setupMaestroRoutes(app) {
   const maestrosRutas = {
@@ -53,6 +54,7 @@ export function setupMaestroRoutes(app) {
     users: createUsersRouter(),
     votacion: createVotacionRouter(),
 
+    reporte: createReporteRouter(),
     //nuevas tablas
 
     ingresos1: createIngresos1Router(),
