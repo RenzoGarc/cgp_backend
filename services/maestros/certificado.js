@@ -15,18 +15,6 @@ export class CertificadoService {
     }
   }
 
-  // async getOne() {
-  //   try {
-  //     const data = await Certificado.findOne({ where: { codcertificado } });
-  //     if (!data) {
-  //       throw new Error("Certificado no encontrado.");
-  //     }
-  //     return data;
-  //   } catch (error) {
-  //     throw new Error("Error al obtener el Certificado...." + error);
-  //   }
-  // }
-  //
   async getAllById(id) {
     try {
       const data = await Certificado.findAll({ where: { id } });
@@ -44,7 +32,7 @@ export class CertificadoService {
     fechaemision,
     observacion,
     idtipoentrega,
-
+    idtipocertificado,
     monto,
     idcolegiado,
     fechapago,
@@ -52,6 +40,18 @@ export class CertificadoService {
     idformapago
   ) {
     try {
+      console.log(
+        cantidad,
+        fechaemision,
+        observacion,
+        idtipoentrega,
+        idtipocertificado,
+        monto,
+        idcolegiado,
+        fechapago,
+        ncomprobante,
+        idformapago
+      );
       const datapago = await Pago.create({
         monto,
         fechapago,
@@ -114,4 +114,23 @@ export class CertificadoService {
       throw new Error("Error al eliminar el Certificado.");
     }
   }
+  async getByCodigo(codigo) {
+    try {
+      const data = await Certificado.findOne({
+        where: { codcertificado: codigo.toString() },
+      });
+      return data;
+    } catch (error) {
+      throw new Error("Error al obtener el certificado por código: " + error);
+    }
+  }
+  //   try {
+  //     const data = await Certificado.findOne({
+  //       where: { codcertificado: codigo },
+  //     });
+  //     return data;
+  //   } catch (error) {
+  //     throw new Error("Error al obtener el certificado por código: " + error);
+  //   }
+  // }
 }

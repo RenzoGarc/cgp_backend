@@ -13,14 +13,6 @@ export class CertificadoController {
       res.status(500).json({ error: error.message });
     }
   }
-  // async getAll(req, res) {
-  //   try {
-  //     const data = await certificadoService.getOne();
-  //     res.json(data);
-  //   } catch (error) {
-  //     res.status(500).json({ error: error.message });
-  //   }
-  // }
 
   getById = async (req, res) => {
     const { id } = req.params;
@@ -94,15 +86,39 @@ export class CertificadoController {
   };
 
   //
-  async getAllById(req, res) {
-    console.log(req.params);
-    const { id } = req.params;
+  // async getAllById(req, res) {
+  //   console.log(req.params);
+  //   const { id } = req.params;
+  //   try {
+  //     console.log(id);
+  //     const data = await certificadoService.getAllById(id);
+  //     res.json(data);
+  //   } catch (error) {
+  //     res.status(500).json({ error: error.message });
+  //   }
+  // }
+
+  async validarCertificado(req, res) {
+    const { codigo } = req.query;
+    if (!codigo) {
+      return res
+        .status(400)
+        .json({ error: "Código de certificado no proporcionado." });
+    }
+
     try {
-      console.log(id);
-      const data = await certificadoService.getAllByid(id);
-      res.json(data);
+      const certificado = await certificadoService.getByCodigo(codigo);
+      if (!certificado) {
+        return res.status(404).json({ error: "Certificado no encontrado." });
+      }
+
+      return res.json({
+        success: true,
+        message: "Certificado válido.",
+        certificado,
+      });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: error.message });
     }
   }
 }

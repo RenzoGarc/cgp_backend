@@ -16,7 +16,10 @@ export const createCertificadoRouter = () => {
   CertificadoRouter.put("/:id", certificadoController.update);
 
   ///
-  CertificadoRouter.get("/:id", certificadoController.getAllById);
+  // CertificadoRouter.get("/:id", certificadoController.getAllById);
+
+  //
+  CertificadoRouter.get("/validar", certificadoController.validarCertificado);
 
   return CertificadoRouter;
 };

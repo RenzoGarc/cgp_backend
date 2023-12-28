@@ -25,6 +25,9 @@ import { createVotacionRouter } from "../routes/maestros/votacion.js";
 import { createPagoRouter } from "../routes/maestros/pago.js";
 import { createIngresos1Router } from "../routes/maestros/ingresos1.js";
 import { createReporteRouter } from "../routes/reporte.js";
+import { createReporteColeRouter } from "../routes/reportesColegiado.js";
+import { createVotacionDetalleRouter } from "../routes/maestros/votacionDetalle.js";
+import { createCertificadoValidarRouter } from "../routes/maestros/certificadoValidar.js";
 
 export function setupMaestroRoutes(app) {
   const maestrosRutas = {
@@ -55,9 +58,15 @@ export function setupMaestroRoutes(app) {
     votacion: createVotacionRouter(),
 
     reporte: createReporteRouter(),
+    reporte: createReporteColeRouter(),
     //nuevas tablas
 
     ingresos1: createIngresos1Router(),
+
+    //view tablas
+
+    votacionDetalle: createVotacionDetalleRouter(),
+    certificadoValidar: createCertificadoValidarRouter(),
   };
 
   for (const [ruta, router] of Object.entries(maestrosRutas)) {
