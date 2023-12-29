@@ -56,7 +56,7 @@ export class EgresoService {
 
   async getById(id) {
     try {
-      const data = await Egreso.findAll({ where: { idcolegiado: id } });
+      const data = await Egreso.findOne({ where: { id: id } });
       if (!data) {
         throw new Error("Egreso no encontrado.");
       }
@@ -66,11 +66,44 @@ export class EgresoService {
     }
   }
 
-  async update(id, estado) {
+  async getByColegiadogetById(id) {
     try {
-      const data = await Egreso.update({ estado }, { where: { id } });
+      const data = await Egreso.findAll({ where: { idcolegiado: id } });
+      if (!data) {
+        throw new Error("Egreso no encontrado.");
+      }
       return data;
     } catch (error) {
+      console.log(error);
+      throw new Error("Error al obtener el Egreso por ID.");
+    }
+  }
+
+  async update(
+    id,
+    monto,
+    description,
+    conceptotext,
+    fechaegreso,
+    idcolegiado,
+    idconceptolist
+  ) {
+    try {
+      console.log("llega" + id);
+      const data = await Egreso.update(
+        {
+          monto,
+          description,
+          conceptotext,
+          fechaegreso,
+          idcolegiado,
+          idconceptolist,
+        },
+        { where: { id } }
+      );
+      return data;
+    } catch (error) {
+      console.log(error);
       throw new Error("Error al actualizar el Egreso.");
     }
   }

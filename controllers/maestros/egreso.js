@@ -14,6 +14,17 @@ export class EgresoController {
     }
   }
 
+  getByColegiadogetById = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const data = await egresoService.getByColegiadogetById(id);
+      if (data) return res.json(data);
+      res.status(404).json({ message: "Información no encontrada" });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
   getById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -74,9 +85,24 @@ export class EgresoController {
 
   update = async (req, res) => {
     const { id } = req.params;
-    const { estado } = req.body;
+    const {
+      monto,
+      description,
+      conceptotext,
+      fechaegreso,
+      idcolegiado,
+      idconceptolist,
+    } = req.body;
     try {
-      const data = await egresoService.update(id, estado);
+      const data = await egresoService.update(
+        id,
+        monto,
+        description,
+        conceptotext,
+        fechaegreso,
+        idcolegiado,
+        idconceptolist
+      );
       return res.json(data);
     } catch (error) {
       res.status(500).json({ error: "Error actualizando la información." });

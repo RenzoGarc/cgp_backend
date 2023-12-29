@@ -9,6 +9,7 @@ export const createEgresoRouter = () => {
   const egresoController = new EgresoController();
 
   EgresoRouter.get("/", egresoController.getAll);
+  EgresoRouter.get("/colegiado/:id", egresoController.getByColegiadogetById);
   EgresoRouter.get("/:id", egresoController.getById);
   EgresoRouter.post("/", egresoController.create);
   EgresoRouter.delete("/:id", egresoController.delete);

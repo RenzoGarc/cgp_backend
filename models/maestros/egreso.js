@@ -11,7 +11,7 @@ const Egreso = sequelize.define(
       autoIncrement: true,
     },
     monto: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.DOUBLE,
       allowNull: false,
     },
     description: {
