@@ -5,6 +5,7 @@ import { setupMaestroRoutes } from "./setup/routeMaestroSetup.js";
 import { createIngresosRouter } from "./routes/ingresosRouter.js";
 import { createEgresosRouter } from "./routes/egresosRouter.js";
 import { createCertificadosRouter } from "./routes/certificados.js";
+import { createAuthenticateRouter } from "./routes/security/authenticate.js";
 
 const app = express();
 app.use(json());
@@ -18,6 +19,8 @@ app.use("/ingresos", createIngresosRouter());
 app.use("/egresos/detail", createEgresosRouter());
 
 app.use("/certificados/detail", createCertificadosRouter());
+
+app.use("/security", createAuthenticateRouter());
 
 //
 
