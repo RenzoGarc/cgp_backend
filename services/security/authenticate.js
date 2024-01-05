@@ -1,5 +1,8 @@
 import { generarToken, refreshTokenUser } from "../../helpers/auth.js";
-import { comparePassword, generatePasswordHash } from "../../helpers/comparePassword.js";
+import {
+  comparePassword,
+  generatePasswordHash,
+} from "../../helpers/comparePassword.js";
 import Authenticate from "../../models/security/authenticate.js";
 import IntAuthenticate from "../../models/security/intAuthenticate.js";
 import ToolsDetail from "../../models/security/tools.js";
@@ -15,7 +18,7 @@ export class AuthenticateService {
       let data = await Usuarios.findOne({
         where: { name: c_usuario },
       });
-      let isPasswordCorrect = comparePassword(data.password, c_contrasena);      
+      let isPasswordCorrect = comparePassword(data.password, c_contrasena);
 
       if (!isPasswordCorrect) {
         throw new Error("Contraseña incorrecta.");
@@ -66,11 +69,11 @@ export class AuthenticateService {
       const rol = await Rol.findOne({
         where: { id: usuario.rol_id },
       });
-    //   const sistemas = await TiSisClienteD.findAll({
-    //     where: {
-    //       fk_cliente: id_cliente,
-    //     },
-    //   });
+      //   const sistemas = await TiSisClienteD.findAll({
+      //     where: {
+      //       fk_cliente: id_cliente,
+      //     },
+      //   });
       return { usuario, sistemas, rol };
     } catch (error) {
       console.log(error);
@@ -326,41 +329,39 @@ export class AuthenticateService {
     }
   }
 
-  async createUser(
-    name, password, correo, id_rol, rol_name
-  ) {
+  async createUser(name, password, correo, id_rol, rol_name) {
     try {
-        let roles = [
-            { id: "1", nombre: "Asistente" },
-            { id: "2", nombre: "Secretario" },
-            { id: "3", nombre: "Tesorero" },
-            { id: "4", nombre: "Decano" },
-            { id: "5", nombre: "Encargado de asuntos sociales" }
-        ];
-        let resultado = roles.find(item => item.id === id_rol);
+      let roles = [
+        { id: "1", nombre: "Asistente" },
+        { id: "2", nombre: "Secretario" },
+        { id: "3", nombre: "Tesorero" },
+        { id: "4", nombre: "Decano" },
+        { id: "5", nombre: "Encargado de asuntos sociales" },
+      ];
+      let resultado = roles.find((item) => item.id === id_rol);
       const usuario = await Usuarios.create({
         name: name,
         email: correo,
         password: generatePasswordHash(password),
         rol: resultado.nombre,
-        rol_poder: id_rol
+        rol_poder: id_rol,
       });
       return usuario;
     } catch (error) {
-        console.log(error);
+      console.log(error);
       throw new Error("Error: " + error);
     }
   }
 
   async getAll(pageNumber, pageSize) {
     try {
-        let roles = [
-            { id: "1", nombre: "Asistente" },
-            { id: "2", nombre: "Secretario" },
-            { id: "3", nombre: "Tesorero" },
-            { id: "4", nombre: "Decano" },
-            { id: "5", nombre: "Encargado de asuntos sociales" }
-        ];
+      let roles = [
+        { id: "1", nombre: "Asistente" },
+        { id: "2", nombre: "Secretario" },
+        { id: "3", nombre: "Tesorero" },
+        { id: "4", nombre: "Decano" },
+        { id: "5", nombre: "Encargado de asuntos sociales" },
+      ];
       const offset = (pageNumber - 1) * pageSize;
       const data = await Usuarios.findAndCountAll({
         offset,
