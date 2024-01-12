@@ -1,4 +1,7 @@
 import Colegiado from "../../models/maestros/colegiado.js";
+import Pago from "../../models/maestros/pago.js";
+
+import { Sequelize, Op } from "sequelize";
 
 export class ColegiadoService {
   async getAll(pageNumber, pageSize) {
@@ -35,8 +38,36 @@ export class ColegiadoService {
           id: codigo,
         },
       });
-      return data;
+
+      const mesActual = new Date().getMonth() + 1;
+      const anoActual = new Date().getFullYear();
+
+      const pagosEnElMes = await Pago.count({
+        where: {
+          idcolegiado: data.id,
+          fechapago: {
+            [Op.and]: [
+              Sequelize.where(
+                Sequelize.fn(
+                  "EXTRACT",
+                  Sequelize.literal('MONTH FROM "fechapago"')
+                ),
+                mesActual
+              ),
+              Sequelize.where(
+                Sequelize.fn(
+                  "EXTRACT",
+                  Sequelize.literal('YEAR FROM "fechapago"')
+                ),
+                anoActual
+              ),
+            ],
+          },
+        },
+      });
+      return { data, pagosEnElMes };
     } catch (error) {
+      console.log(error);
       throw new Error("Error al obtener los Colegiado...." + error);
     }
   }
