@@ -28,6 +28,8 @@ import { createReporteRouter } from "../routes/reporte.js";
 import { createReporteColeRouter } from "../routes/reportesColegiado.js";
 import { createVotacionDetalleRouter } from "../routes/maestros/votacionDetalle.js";
 import { createCertificadoValidarRouter } from "../routes/maestros/certificadoValidar.js";
+import { createCrudRouter } from "../routes/maestros/crud.js";
+
 // import { createReportesRouter } from "../routes/maestros/reportes.js";
 
 export function setupMaestroRoutes(app) {
@@ -69,6 +71,8 @@ export function setupMaestroRoutes(app) {
     votacionDetalle: createVotacionDetalleRouter(),
     certificadoValidar: createCertificadoValidarRouter(),
     // reporteExcel: createReportesRouter(),
+
+    crud: createCrudRouter(),
   };
 
   for (const [ruta, router] of Object.entries(maestrosRutas)) {
