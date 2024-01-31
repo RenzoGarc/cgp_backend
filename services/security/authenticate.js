@@ -35,20 +35,14 @@ export class AuthenticateService {
 
   async refreshToken(id, id_cliente) {
     try {
-      let data = await Authenticate.findOne({
-        where: { id_usuario: id },
+      let data = await Usuarios.findOne({
+        where: { id: id },
       });
 
       let isSuiteUser = false;
 
       if (!data) {
-        data = await IntAuthenticate.findOne({
-          where: { id_usuario: id },
-        });
-
-        if (!data) {
-          throw new Error("El usuario no ha sido encontrado.");
-        }
+        throw new Error("El usuario no ha sido encontrado.");
       } else {
         isSuiteUser = true;
       }
@@ -69,11 +63,6 @@ export class AuthenticateService {
       const rol = await Rol.findOne({
         where: { id: usuario.rol_id },
       });
-      //   const sistemas = await TiSisClienteD.findAll({
-      //     where: {
-      //       fk_cliente: id_cliente,
-      //     },
-      //   });
       return { usuario, sistemas, rol };
     } catch (error) {
       console.log(error);
