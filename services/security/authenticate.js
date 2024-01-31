@@ -14,6 +14,7 @@ import Usuarios from "../../models/security/tgUsuario.js";
 
 export class AuthenticateService {
   async signIn(c_usuario, c_contrasena) {
+    console.log("LLEGA?");
     try {
       let data = await Usuarios.findOne({
         where: { name: c_usuario },
