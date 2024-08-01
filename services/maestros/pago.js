@@ -49,7 +49,7 @@ export class PagoService {
       }
       return data;
     } catch (error) {
-      throw new Error("Error al obtener el Pago  por ID.");
+      throw new Error("Error al obtener el Pago  por ID." + error);
     }
   }
 
